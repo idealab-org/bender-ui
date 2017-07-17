@@ -1,0 +1,11 @@
+.box {
+    border: 10px;
+    border-color: #000000;
+    height: 25vw;
+    width: 25vw;
+    max-height: 25vh;
+    max-width: 25vh;
+    font-size:4.5vw;
+    color: #fff;
+    font-size-adjust:auto;
+}

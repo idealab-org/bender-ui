@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import './Box.css';
+import ColorMap from './colormap.js'
 
 class Box extends Component {
-    constructor() {
-        super();
-        this.state = {
-            loc: null,
-            color: null,
-            text: null,
-        }
-    }
     render() {
+        var style = {
+            backgroundColor: ColorMap[this.props.color]
+        }
         return (
-            <button className="box" onClick={() => this.props.onClick()}>
+            <button className="box" style={style} onClick={() => this.props.onClickHandler(this.props.loc, this.props.clickable)}>
                 {this.props.text}
             </button>
         ) 

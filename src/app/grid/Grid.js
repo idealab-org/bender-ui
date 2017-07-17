@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import './Grid.css'
-import './Box/Box.js'
-import './colormap.js'
+import Box from './box/Box.js'
 
 class Grid extends Component {
-    constructor() {
-        super();
-        this.state = {
-            grid: null,
-        };
-    }
-
     renderRow(row_idx, row_def) {
         var row = []
         for (var r = 0; r < row_def.length; r++) {
+            var color = null;
+            var clickable = false;
+            if (row_def[r].color  && row_def[r].text) {
+                clickable = true;
+            }
             if (row_def[r].color == null) {
                 color = 'white';
             } else {
                 color = row_def[r].color;
             }
-            row.push(renderBox({row_idx, r}, color, row_def[r].text))
+            var text = null;
+            if (row_def[r].text == null) {
+                text = '\u00A0';
+            } else {
+                text = row_def[r].text 
+            }
+            row.push(this.renderBox([row_idx, r], color, text, clickable))
         }
         return (
             <div className="row">
@@ -28,14 +31,15 @@ class Grid extends Component {
         );
     }
 
-    renderBox(loc, c, t) {
-        return <Box loc={loc} color={c} text={t} onClick={() => this.prop.handleSelect()}/>
+    renderBox(loc, c, t, cl) {
+        return <Box loc={loc} color={c} text={t} clickable={cl} onClickHandler={this.props.handler}/>
     }
 
     render() {
         var rows = []
-        for (var r = 0; r < this.state.grid.length; r++) {
-            rows.push(renderRow(r, this.state.grid[r]));
+        console.log(this.props.grid)
+        for (var r = 0; r < this.props.grid.length; r++) {
+            rows.push(this.renderRow(r, this.props.grid[r]));
         }
 
         return (

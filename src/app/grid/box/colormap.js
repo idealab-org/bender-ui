@@ -1,8 +1,8 @@
 const ColorMap = {
-    'red': '#FF0000',
-    'green': '#00FF00',
-    'blue': '#0000FF',
-    'white': '#FFFFFF',
+    'red': '#cc0000',
+    'green': '#00aa00',
+    'blue': '#0000cc',
+    'white': '#fbfbfb',
 }
 
 export default ColorMap;

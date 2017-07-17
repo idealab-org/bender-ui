@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import 'Query.css';
+import './Query.css';
 
 class Query extends Component {
     render() {
         return (
-            <div className="Query">
-                <p>Please select the Red Box</p>
+            <div className="query">
+                <h2>{this.props.query}</h2>
             </div>
         );
     }

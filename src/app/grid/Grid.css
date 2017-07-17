@@ -1,0 +1,31 @@
+.row {
+    display: inline-block;
+    height: 25vw;
+    display: block;
+    width: 100%;
+    min-width: 100% !important;
+    max-height: 25vh;
+    max-width: 75vh;
+    float: right;
+    clear: right;
+}
+
+.grid {
+    width:75vw;
+    height:75vw;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ccc;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    max-height: 75vh;
+    max-width: 75vh;
+}
