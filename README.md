@@ -51,6 +51,7 @@
             ],
         ],
     "query": <str>,
+    "time": <int> (in ms)
 }
 ```
 > Response
@@ -112,6 +113,7 @@
             ],
         ],
     "query": "Please select the Blue Box",
+    "time": 5000,
 }
 ```
 ```
@@ -163,6 +165,7 @@
             ],
         ],
     "query": "Please select the box that says RED",
+    "time": 5000,
 }
 ```
 ```
