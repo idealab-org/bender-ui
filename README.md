@@ -3,6 +3,12 @@
 ## Build 
 > yarn build
 
+### Query Structure
+
+```
+curl -H "Content-Type: application/json" -X POST -d '{"color_choices": ["red", "green", "blue"], "grid_size": [3,1], "query": "select text", "response_time": 45000}' [URL]
+```
+
 ## Required Schema
 
 > Job Request
