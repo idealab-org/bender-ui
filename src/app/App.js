@@ -11,14 +11,36 @@ class App extends Component {
     constructor() {
         super();
 
-        this.state = {req: {"job_id": null,
-                            "grid": null,
-                            "query": null,
-                            "time": null}};
-
-        alert("You will have 5 seconds to complete the task")
+        alert("You will have 5 seconds to complete the task")        
+        this.state = {req: {job_id: null,
+                            grid: null,
+                            query: null,},
+                      time: 0,
+                      valid: true};
+        console.log(this.state)                      
+            
         this.Job();
         this.click = this.click.bind(this);
+    }
+
+    componentDidMount() {
+        console.log(this.state)        
+    }
+
+    tick() {
+        console.log(this.state)
+        this.setState({
+            time: this.state.time + 1
+        });
+        if (this.state.time >= 50) {
+            this.setState({valid: false});  
+            alert("Time Expired")
+            window.location.reload()
+        }
+    }
+    
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     Job() {
@@ -40,7 +62,7 @@ class App extends Component {
 
     click(loc, clickable) {
         //RETURN THE SELECTION TO SERVER 
-        if (clickable) { 
+        if (clickable && this.state.valid) { 
             axios.post(process.env.REACT_APP_JOB_RESPONSE_URL, {
                 job_id: this.state.req.job_id,
                 selected: loc
@@ -57,9 +79,12 @@ class App extends Component {
     }
 
     render() {
-        if (this.state.req.job_id === null) {
-            return (<div>Loading</div>);
-        } 
+        //if (this.state.req.job_id === null) {
+        //    return (<div>Loading</div>);
+        //} 
+
+        this.timer = setInterval(this.tick, 50);
+
         return ( 
             <div className="Bender">
                 <Query query={this.state.req.query}/> 

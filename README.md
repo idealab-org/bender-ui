@@ -1,5 +1,8 @@
 # Bender UI 
 
+## Build 
+> yarn build
+
 ## Required Schema
 
 > Job Request
